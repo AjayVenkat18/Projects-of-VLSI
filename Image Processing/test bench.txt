@@ -1,0 +1,82 @@
+`timescale 1ns / 1ps
+
+module TestImageEnhancement();
+
+    parameter INFILE = "image.hex";
+    parameter OUTFILE = "output_image.hex";
+    parameter IMG_SIZE = 65536; // Adjust based on actual input file size
+
+    // Testbench signals
+    reg [7:0] Rin, Gin, Bin;
+    reg [7:0] value;
+    reg [7:0] threshold;
+    reg [1:0] mode;
+
+    wire [7:0] Rout, Gout, Bout;
+
+    // Instantiate the DUT (Device Under Test)
+    image_pross uut (
+        .Rin(Rin),
+        .Gin(Gin),
+        .Bin(Bin),
+        .value(value),
+        .threshold(threshold),
+        .mode(mode),
+        .Rout(Rout),
+        .Gout(Gout),
+        .Bout(Bout)
+    );
+
+    integer infile, outfile, i;
+    reg [23:0] pixel; // Holds the 24-bit RGB pixel read from the file
+
+    initial begin
+        // Open files
+        infile = $fopen(INFILE, "r");
+        outfile = $fopen(OUTFILE, "w");
+
+        if (infile == 0) begin
+            $display("Error: Could not open input file.");
+            $finish;
+        end
+        if (outfile == 0) begin
+            $display("Error: Could not open output file.");
+            $finish;
+        end
+
+        // Test parameters
+        value = 8'd85;         // Brightness adjustment value
+        threshold = 8'd90;    // Threshold for contrast/thresholding
+        mode = 2'b10;          // Brightness increase mode
+
+        $display("Starting image processing...");
+
+        // Process each pixel in the input file
+        for (i = 0; i < IMG_SIZE; i = i + 1) begin
+            // Read a 24-bit pixel (RGB in hex format)
+            if ($fscanf(infile, "%x\n", pixel) != 1) begin
+                $display("Error reading pixel %d. Ending simulation.", i);
+                $finish;
+            end
+
+            // Extract RGB components
+            Rin = pixel[23:16];
+            Gin = pixel[15:8];
+            Bin = pixel[7:0];
+
+            $display("Pixel %d: Read R=%02x, G=%02x, B=%02x", i, Rin, Gin, Bin);
+
+            #0.01
+            // Write the processed pixel to output file
+            $fwrite(outfile, "%02x%02x%02x\n", Rout, Gout, Bout);
+            $display("Pixel %d: Processed R=%02x, G=%02x, B=%02x", i, Rout, Gout, Bout);
+        end
+
+        // Close files
+        $fclose(infile);
+        $fclose(outfile);
+
+        $display("Image processing complete. Output written to %s", OUTFILE);
+        $finish;
+    end
+endmodule

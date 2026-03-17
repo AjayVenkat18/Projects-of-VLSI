@@ -1,0 +1,18 @@
+from PIL import Image
+
+# Open the JPEG image
+img = Image.open('input_image.jpg')
+
+# Resize the image if needed (e.g., to 256x256 pixels)
+img = img.resize((256, 256))
+
+# Convert the image to RGB if it's not already
+img = img.convert('RGB')
+
+# Save the image pixel data into a hex file
+with open('image.hex', 'w') as f:
+    for y in range(img.height):
+        for x in range(img.width):
+            r, g, b = img.getpixel((x, y))
+            # Write pixel data as hex (R, G, B)
+            f.write(f'{r:02X}{g:02X}{b:02X}\n')

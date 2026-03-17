@@ -1,0 +1,69 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 07.11.2024 01:57:35
+// Design Name: 
+// Module Name: image_pross
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module image_pross(
+    input [7:0] Rin, Gin, Bin,
+    input [7:0] value,
+    input [7:0] threshold,
+    input [1:0]mode,
+    output reg [7:0] Rout, Gout, Bout
+    );
+    always @(*) begin
+    case (mode)
+        2'b00: begin // Contrast Manipulation
+            if (Rin > threshold) Rout = (Rin + value > 255) ? 255 : Rin + value;
+            else Rout = (Rin < value) ? 0 : Rin - value;
+            if (Gin > threshold) Gout = (Gin + value > 255) ? 255 : Gin + value;
+            else Gout = (Gin < value) ? 0 : Gin - value;
+            if (Bin > threshold) Bout = (Bin + value > 255) ? 255 : Bin + value;
+            else Bout = (Bin < value) ? 0 : Bin - value;
+        end
+        2'b01: begin // Brightness Manipulation
+            if (value[7] == 1) begin // Subtract brightness
+                Rout = (Rin < value) ? 0 : Rin - value;
+                Gout = (Gin < value) ? 0 : Gin - value;
+                Bout = (Bin < value) ? 0 : Bin - value;
+            end else begin // Add brightness
+                Rout = (Rin + value > 255) ? 255 : Rin + value;
+                Gout = (Gin + value > 255) ? 255 : Gin + value;
+                Bout = (Bin + value > 255) ? 255 : Bin + value;
+            end
+        end
+        2'b10: begin // Invert Colors
+            Rout = 255 - Rin;
+            Gout = 255 - Gin;
+            Bout = 255 - Bin;
+        end
+        2'b11: begin // Threshold Operation
+            if (Rin > threshold) Rout = 255; else Rout = 0;
+            if (Gin > threshold) Gout = 255; else Gout = 0;
+            if (Bin > threshold) Bout = 255; else Bout = 0;
+        end
+        default: begin // Default to pass-through
+            Rout = Rin;
+            Gout = Gin;
+            Bout = Bin;
+        end
+    endcase
+end
+
+endmodule

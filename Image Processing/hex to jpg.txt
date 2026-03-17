@@ -1,0 +1,38 @@
+from PIL import Image
+
+# File paths
+hex_file_path = r"C:\Users\sarth\Desktop\VLSI Projects decisions\output_image.hex"  # Path to the hex file
+output_image_path = r'output_image1.jpg'  # Path to save the output image
+
+# Define target image dimensions
+image_width = 256
+image_height = 256
+
+# Open the hex file and read its data
+with open(hex_file_path, 'r') as f:
+    hex_data = [line.strip() for line in f if line.strip()]  # Read non-empty lines
+
+# Validate the hex file data size
+expected_pixel_count = image_width * image_height
+if len(hex_data) != expected_pixel_count:
+    raise ValueError(
+        f"Hex file contains {len(hex_data)} pixels, but expected {expected_pixel_count}."
+    )
+
+# Create a new image
+img = Image.new('RGB', (image_width, image_height))
+
+# Fill the image with the processed pixel data
+for y in range(image_height):
+    for x in range(image_width):
+        index = y * image_width + x
+        hex_value = hex_data[index]
+        # Convert hex value (RRGGBB) to RGB components
+        r = int(hex_value[0:2], 16)
+        g = int(hex_value[2:4], 16)
+        b = int(hex_value[4:6], 16)
+        img.putpixel((x, y), (r, g, b))
+
+# Save the image as a JPEG file
+img.save(output_image_path)
+print(f"Image saved to {output_image_path}")

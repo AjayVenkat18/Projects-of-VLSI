@@ -1,0 +1,132 @@
+*** adc***
+
+VDD 1 0 DC 8V
+V1 106 0 DC 1.80V
+V2 107 0 DC 1.80V
+V3 108 0 DC 1.80V
+V4 109 0 DC 1.80V
+V5 110 0 DC 1.80V
+V6 111 0 DC 1.80V
+V7 116 0 DC 1.80V
+Vref 121 0 DC 8V
+
+
+
+MN1 45 55 0 0 N1  w=10u l=1u
+MN2 0 57 42 0 N1  w=10u l=1u
+MN3 43 61 0 0 N1  w=10u l=1u
+MN4 42 56 0 0 N1  w=10u l=1u
+MN5 0 45 39 0 N1  w=10u l=1u
+MN6 0 43 37 0 N1  w=10u l=1u
+MN7 0 42 36 0 N1  w=10u l=1u
+MN8 0 57 43 0 N1  w=10u l=1u
+MN9 42 54 0 0 N1  w=10u l=1u
+MN10 0 54 45 0 N1  w=10u l=1u
+MN11 43 65 0 0 N1  w=10u l=1u
+MN12 0 65 42 0 N1  w=10u l=1u
+MN13 45 59 0 0 N1  w=10u l=1u
+MN14 0 59 43 0 N1  w=10u l=1u
+MN15 0 65 45 0 N1  w=10u l=1u
+MN16 0 82 54 0 N1  w=10u l=1u
+MN17 0 83 55 0 N1  w=10u l=1u
+MN18 0 84 56 0 N1  w=10u l=1u
+MN19 0 85 57 0 N1  w=10u l=1u
+MN20 0 86 59 0 N1  w=10u l=1u
+MN21 0 87 61 0 N1  w=10u l=1u
+MN22 0 88 65 0 N1  w=10u l=1u
+MN23 99 108 68 0 N1  w=10u l=1u
+MN24 100 116 69 0 N1  w=10u l=1u
+MN25 101 111 70 0 N1  w=10u l=1u
+MN26 102 109 71 0 N1  w=10u l=1u
+MN27 103 107 72 0 N1  w=10u l=1u
+MN28 104 110 73 0 N1  w=10u l=1u
+MN29 105 106 74 0 N1  w=10u l=1u
+MN30 0 82 99 0 N1  w=10u l=1u
+MN31 0 83 100 0 N1  w=10u l=1u
+MN32 0 84 101 0 N1  w=10u l=1u
+MN33 0 85 102 0 N1  w=10u l=1u
+MN34 0 86 103 0 N1  w=10u l=1u
+MN35 0 87 104 0 N1  w=10u l=1u
+MN36 0 88 105 0 N1  w=10u l=1u
+MN37 99 113 75 0 N1  w=10u l=1u
+MN38 100 119 76 0 N1  w=10u l=1u
+MN39 101 117 77 0 N1  w=10u l=1u
+MN40 102 114 78 0 N1  w=10u l=1u
+MN41 103 115 79 0 N1  w=10u l=1u
+MN42 104 118 80 0 N1  w=10u l=1u
+MN43 105 112 81 0 N1  w=10u l=1u
+MN44 0 82 82 0 N1  w=10u l=1u
+MN45 0 83 83 0 N1  w=10u l=1u
+MN46 0 84 84 0 N1  w=10u l=1u
+MN47 0 85 85 0 N1  w=10u l=1u
+MN48 0 86 86 0 N1  w=10u l=1u
+MN49 0 87 87 0 N1  w=10u l=1u
+MN50 0 88 88 0 N1  w=10u l=1u
+
+
+MP1 1 42 36 1 P1  w=10u l=1u
+MP2 1 43 37 1 P1  w=10u l=1u
+MP3 1 45 39 1 P1  w=10u l=1u
+MP4 44 56 42 1 P1  w=10u l=1u
+MP5 46 61 43 1 P1  w=10u l=1u
+MP6 47 57 44 1 P1  w=10u l=1u
+MP7 48 55 45 1 P1  w=10u l=1u
+MP8 49 57 46 1 P1  w=10u l=1u
+MP9 50 54 47 1 P1  w=10u l=1u
+MP10 51 54 48 1 P1 w=10u l=1u
+MP11 52 65 49 1 P1  w=10u l=1u
+MP12 1 65 50 1 P1  w=10u l=1u
+MP13 53 59 51 1 P1  w=10u l=1u
+MP14 1 59 52 1 P1  w=10u l=1u
+MP15 1 65 53 1 P1  w=10u l=1u
+MP16 1 68 54 1 P1  w=10u l=1u
+MP17 1 69 55 1 P1  w=10u l=1u
+MP18 1 70 56 1 P1  w=10u l=1u
+MP19 1 71 57 1 P1  w=10u l=1u
+MP20 1 72 59 1 P1  w=10u l=1u
+MP21 1 73 61 1 P1  w=10u l=1u
+MP22 1 74 65 1 P1  w=10u l=1u
+MP23 1 75 68 1 P1  w=10u l=1u
+MP24 1 76 69 1 P1  w=10u l=1u
+MP25 1 77 70 1 P1  w=10u l=1u
+MP26 1 78 71 1 P1  w=10u l=1u
+MP27 1 79 72 1 P1  w=10u l=1u
+MP28 1 80 73 1 P1  w=10u l=1u
+MP29 1 81 74 1 P1  w=10u l=1u
+MP30 1 75 75 1 P1  w=10u l=1u
+MP31 1 76 76 1 P1  w=10u l=1u
+MP32 1 77 77 1 P1  w=10u l=1u
+MP33 1 78 78 1 P1  w=10u l=1u
+MP34 1 79 79 1 P1  w=10u l=1u
+MP35 1 80 80 1 P1  w=10u l=1u
+MP36 1 81 81 1 P1  w=10u l=1u
+MP37 1 82 82 1 P1  w=10u l=1u
+MP38 1 83 83 1 P1  w=10u l=1u
+MP39 1 84 84 1 P1  w=10u l=1u
+MP40 1 85 85 1 P1  w=10u l=1u
+MP41 1 86 86 1 P1  w=10u l=1u
+MP42 1 87 87 1 P1  w=10u l=1u
+MP43 1 88 88 1 P1  w=10u l=1u
+
+
+
+R1 112 121 1000
+R2 119 113 1000
+R3 118 114 1000
+R4 113 115 1000
+R5 0 117 1000
+R6 114 119 1 00
+R7 115 112 1000
+R8 117 118 1000
+
+
+.MODEL N1 NMOS LEVEL=54 version=4.7            
+.MODEL P1 PMOS LEVEL=54 version=4.7
+
+
+.tran 0.1 320
+.control
+run
+plot  V(39) V(37) V(56)
+.endc
+.END
